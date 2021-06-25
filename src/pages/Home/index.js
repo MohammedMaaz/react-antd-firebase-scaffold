@@ -1,6 +1,8 @@
 import React from "react";
 import PlaceholderPage from "../../components/PlaceholderPage";
+import { useLang } from "../../utils/i18n";
 
 export default function Home() {
-  return <PlaceholderPage title="Home Page" />;
+  const [lang] = useLang();
+  return <PlaceholderPage title={`${lang("menu_home")} ${lang("page")}`} />;
 }

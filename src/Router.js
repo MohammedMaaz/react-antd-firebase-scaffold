@@ -15,7 +15,8 @@ import { setComputedRoutes } from "./models/router";
 import EmptyLayout from "./layouts/EmptyLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
-import { getRoutePath } from "./utils/utils";
+import { getRoutePath } from "./utils";
+import RootWrapper from "./components/RootWrapper";
 
 const routeRenderer = (
   routes,
@@ -70,7 +71,9 @@ export default connect(undefined, { setComputedRoutes })(function Router({
 
   return (
     <BrowserRouter>
-      <Switch>{ar}</Switch>
+      <RootWrapper>
+        <Switch>{ar}</Switch>
+      </RootWrapper>
     </BrowserRouter>
   );
 });

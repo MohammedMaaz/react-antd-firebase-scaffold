@@ -10,11 +10,21 @@ const { Content } = Layout;
 function DashboardLayout({ children, collapsed, toggleCollapsed }) {
   return (
     <Layout style={{ height: "100vh" }}>
-      <Header collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
+      <Sidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
       <Layout>
-        <Sidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
+        <Header collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
         <Layout>
-          <Content style={{ position: "relative" }}>{children}</Content>
+          <Content
+            style={{
+              position: "relative",
+              paddingLeft: 32,
+              paddingRight: 32,
+              paddingTop: 10,
+              overflow: "auto",
+            }}
+          >
+            {children}
+          </Content>
         </Layout>
       </Layout>
     </Layout>

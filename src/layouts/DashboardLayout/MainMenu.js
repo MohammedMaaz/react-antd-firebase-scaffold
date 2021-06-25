@@ -3,7 +3,8 @@ import { Menu } from "antd";
 import { routes } from "../../utils/config";
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { connect } from "dva";
-import { getRoutePath } from "../../utils/utils";
+import { getRoutePath } from "../../utils";
+import { useLang } from "../../utils/i18n";
 const { SubMenu } = Menu;
 
 function getParentKeys(key, arr = []) {
@@ -16,20 +17,21 @@ function getParentKeys(key, arr = []) {
 }
 
 export default connect(({ router }) => ({ cr: router.computedRoutes }))(
-  function Sidebar({ cr }) {
-    const menuRenderer = useCallback((routes, prefix = "", basePath = "") => {
-      return routes
-        .filter((route) => route.menuItem)
-        .map((route, i) => {
+  function MainMenu({ cr, height }) {
+    const [lang] = useLang();
+
+    const menuRenderer = useCallback(
+      (routes, prefix = "", basePath = "") => {
+        return routes.map((route, i) => {
+          if (!route.menuItem) return null;
+
           const path = getRoutePath(basePath, route.route?.path || "");
+          const title =
+            typeof route.title === "function" ? route.title(lang) : route.title;
 
           if (route.subRoutes) {
             return (
-              <SubMenu
-                key={prefix + i}
-                icon={<route.icon />}
-                title={route.title}
-              >
+              <SubMenu key={prefix + i} icon={<route.icon />} title={title}>
                 {menuRenderer(route.subRoutes, prefix + i + ".", path)}
               </SubMenu>
             );
@@ -37,17 +39,20 @@ export default connect(({ router }) => ({ cr: router.computedRoutes }))(
 
           return (
             <Menu.Item icon={<route.icon />} key={prefix + i}>
-              <Link to={path}>{route.title}</Link>
+              <Link to={path}>{title}</Link>
             </Menu.Item>
           );
         });
-    }, []);
+      },
+      [lang]
+    );
 
     const pathname = useLocation().pathname;
     const selectedKey = cr.find((r) => matchPath(pathname, r.route)).key;
 
     return (
       <Menu
+        style={{ height }}
         defaultOpenKeys={getParentKeys(selectedKey)}
         selectedKeys={[selectedKey]}
         mode="inline"

@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-input-search > input {
+  background-color: inherit;
+}
+
+.none {
+  display: none;
+}
+
+.show-on-xs {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-on-xs {
+    display: none;
+  }
+  .show-on-xs {
+    display: block;
+  }
+}

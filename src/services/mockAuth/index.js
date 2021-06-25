@@ -1,4 +1,4 @@
-import { delay, randHashString } from "../utils/utils";
+import { delay, randHashString } from "../utils";
 
 const auth_event = new CustomEvent("auth_event");
 const CURR_USER = "__curr_user_mock__";

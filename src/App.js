@@ -5,6 +5,7 @@ import auth from "./models/auth";
 import router from "./models/router";
 import { globalErrorHandler } from "./utils/errorHandler";
 import "antd/dist/antd.css";
+import "styles/global.scss";
 
 export const app = dva({
   onError: globalErrorHandler,

@@ -1,0 +1,19 @@
+{
+    "menu_home": "ہوم",
+    "menu_parent": "والد",
+    "menu_child": "بچہ",
+    "menu_grand_child": "پوتا",
+    "lang_name": "اردو",
+    "page": "صفحہ",
+    "logout": "لاگ آوٗٹ",
+    "logout_msg": "کیا آپ واقعی لاگ آوٗٹ کرنا چاہتے ہیں؟",
+    "select_theme": "رنگ چنیں",
+    "change_theme": "تبدیلئ رنگ",
+    "notifications": "اطلاعات",
+    "cancel": "منسوخ",
+    "ok": "ٹھیک",
+    "login": "لاگ ان",
+    "email": "ای میل",
+    "password": "پاسورڈ",
+    "signup": "سائن اپ"
+}
