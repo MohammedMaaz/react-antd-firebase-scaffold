@@ -2,7 +2,7 @@ import { List } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 import React, { useCallback, useEffect, useState } from "react";
 import { arrayExtend, placeholderImg } from "../../utils";
-import { openFile } from "../PopoverWidth";
+import { openFile } from "../RootWrapper";
 import ServerImg from "../ServerImg";
 import Hover from "../Hover";
 

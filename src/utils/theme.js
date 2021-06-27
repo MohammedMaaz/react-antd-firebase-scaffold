@@ -1,5 +1,9 @@
 import { useContext } from "react";
-import { ThemeContext, _setTheme } from "../components/RootWrapper";
+import {
+  ThemeContext,
+  _onThemeChange,
+  _setTheme,
+} from "../components/RootWrapper";
 
 const STORAGE_KEY = "__theme_color__";
 
@@ -44,6 +48,7 @@ export const useTheme = () => {
 const Theme = {
   set,
   get,
+  on_change: _onThemeChange,
   colors,
 };
 

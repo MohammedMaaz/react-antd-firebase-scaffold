@@ -10,8 +10,9 @@
           "models": "./models",
           "pages": "./pages",
           "services": "./services",
-          "utils": "./utils",
-          "styles": "./styles"
+          "styles": "./styles",
+          "translations": "./translations",
+          "utils": "./utils"
         }
       }]
     ]

@@ -15,7 +15,7 @@ const PlaceholderPage = require("../components/PlaceholderPage").default;
 //component as they are ordered in the array
 export const routes = [
   {
-    title: (lang) => lang("menu_home"), //reqd for main-menu-item and sub-menu-item
+    title: (lang) => lang("menu_home"), //reqd for main-menu-item and sub-menu-item (can be a function or a string)
     icon: DashboardOutlined,
     route: {
       //route config for react-router-dom

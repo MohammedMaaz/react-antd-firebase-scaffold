@@ -1,5 +1,9 @@
 import { useContext } from "react";
-import { LangContext, _setLang } from "../components/RootWrapper";
+import {
+  LangContext,
+  _onLangChange,
+  _setLang,
+} from "../components/RootWrapper";
 import en from "../translations/en.json";
 import ur from "../translations/ur.json";
 
@@ -52,6 +56,7 @@ const Lang = {
   set,
   get,
   use,
+  on_change: _onLangChange,
   langs,
 };
 

@@ -22,6 +22,11 @@ a {
   background-color: inherit;
 }
 
+.ant-popover-title {
+  min-width: unset;
+  text-align: center;
+}
+
 .none {
   display: none;
 }

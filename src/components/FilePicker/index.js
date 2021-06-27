@@ -5,7 +5,7 @@ import {
 } from "@ant-design/icons";
 import { Button, List } from "antd";
 import React, { useEffect, useState } from "react";
-import { openFile } from "../PopoverWidth";
+import { openFile } from "../RootWrapper";
 
 export default function FilePicer({
   accept,
