@@ -1,4 +1,5 @@
 import { app } from "../App";
+import scss from "../styles/export.module.scss";
 
 export function getRoutePath(basePath, currPath) {
   if (currPath.startsWith("/")) return currPath;
@@ -40,4 +41,19 @@ export function historyBack(fallbackUrl, delay = 500) {
       window.location.href = fallbackUrl;
     }
   }, delay);
+}
+
+export const sassExports = (function () {
+  let sass = {};
+  for (let [key, val] of Object.entries(scss))
+    sass[key] = JSON.parse(val.slice(1, -1));
+  return sass;
+})();
+
+export function w(px) {
+  return `calc(100vw / var(--base-width) * ${px})`;
+}
+
+export function h(px) {
+  return `calc(100vh / var(--base-height) * ${px})`;
 }

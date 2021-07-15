@@ -1,15 +1,18 @@
 import { EyeOutlined } from "@ant-design/icons";
-import { Image, Spin } from "antd";
+import { Image, Spin, Skeleton } from "antd";
 import React, { useCallback, useState } from "react";
 import { randHashString } from "../../services/utils/utils";
 import { placeholderImg } from "../../utils";
 import Hover from "../Hover";
 import styles from "./index.module.scss";
 
+//loader.type: skeleton | spin
+//loader.shape: circle | square
 export default function ServerImg({
-  loaderProps,
+  loader = { type: "skeleton", shape: "square" },
   defaultWidth = 400,
   defaultHeight = 250,
+  fallback = placeholderImg,
   ...props
 }) {
   const [loading, setLoading] = useState(true);
@@ -29,27 +32,43 @@ export default function ServerImg({
 
   return (
     <>
+      {loading ? (
+        loader.type === "skeleton" ? (
+          <Skeleton.Avatar
+            active
+            size={props.style?.width || defaultWidth}
+            shape={loader.shape}
+          />
+        ) : (
+          <div
+            className={"grid-center"}
+            style={{
+              width: props.style?.width || defaultWidth,
+              height: props.style?.height || defaultHeight,
+              borderRadius: loader.shape === "circle" ? "50%" : 0,
+              backgroundColor: "rgba(0,0,0,0.03)",
+            }}
+          >
+            <Spin size="small" />
+          </div>
+        )
+      ) : null}
       <div
-        className={"grid-center"}
-        {...loaderProps}
         style={{
-          width: props.style?.width || defaultWidth,
-          height: props.style?.height || defaultHeight,
-          display: !loading && "none",
-          backgroundColor: "rgba(0,0,0,0.03)",
-          ...(loaderProps?.style || {}),
+          position: "relative",
+          display: loading && "none",
+          cursor: "pointer",
         }}
       >
-        <Spin size="small" />
-      </div>
-      <div style={{ position: "relative", display: loading && "none" }}>
         <Image
           {...props}
+          src={props?.src || fallback}
           id={id}
           style={props?.style || {}}
-          fallback={placeholderImg}
+          fallback={fallback}
           width={props.style?.width}
           height={props.style?.height}
+          onError={onLoad}
           onLoad={onLoad}
           className={styles.img}
         />

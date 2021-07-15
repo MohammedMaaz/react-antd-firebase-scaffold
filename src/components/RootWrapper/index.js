@@ -50,6 +50,7 @@ export default function RootWrapper({ children }) {
 
   useEffect(() => {
     typeof _cb_lang_ === "function" && _cb_lang_(Lang.get());
+    // document.documentElement.dir = Lang.langs[langId].rtl ? "rtl" : "ltr";
   }, [langId]);
 
   useEffect(() => {

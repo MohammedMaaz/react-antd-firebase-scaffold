@@ -1,0 +1,9 @@
+@import "../../node_modules/sass-json-export/stylesheets/encode/encode.scss";
+
+//export to js
+:export {
+  base_dims: json-encode($base-dims);
+  breakpoints: json-encode($breakpoints);
+  mq: json-encode($mq-exp);
+  theme: json-encode($theme-vars);
+}

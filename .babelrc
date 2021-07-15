@@ -1,19 +1,20 @@
 {
-    "plugins": [
-      ["module-resolver", {
-        "root": ["./src"],
-        "alias": {
-          "_": ".",
-          "assets": "./assets",
-          "components": "./components",
-          "layouts": "./layouts",
-          "models": "./models",
-          "pages": "./pages",
-          "services": "./services",
-          "styles": "./styles",
-          "translations": "./translations",
-          "utils": "./utils"
-        }
-      }]
-    ]
-  }
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "_": ".",
+        "assets": "./assets",
+        "components": "./components",
+        "hooks": "./hooks",
+        "layouts": "./layouts",
+        "models": "./models",
+        "pages": "./pages",
+        "services": "./services",
+        "styles": "./styles",
+        "translations": "./translations",
+        "utils": "./utils"
+      }
+    }]
+  ]
+}

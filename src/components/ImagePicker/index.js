@@ -14,7 +14,6 @@ export default function ImagePicker({
   count,
   width = 120,
   height = 100,
-  column = 4,
   gutter = 16,
   listProps = {},
   imgProps = {},
@@ -67,8 +66,10 @@ export default function ImagePicker({
 
   return (
     <List
-      grid={{ column, gutter }}
-      style={{ width: column * width + (column - 1) * gutter }}
+      grid={{ count, gutter }}
+      style={{
+        width: count * width + (count - 1) * gutter,
+      }}
       dataSource={images}
       renderItem={(img, i) => {
         const isImageValid = isValid(img);
@@ -90,6 +91,7 @@ export default function ImagePicker({
                 width,
                 height,
               }}
+              loader={{ type: "spin", shape: "square" }}
               src={isImageValid ? img.src : placeholderImg}
               {...imgProps}
               preview={isImageValid ? true : false}

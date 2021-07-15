@@ -3,7 +3,7 @@ import { Form, Input, Button } from "antd";
 import { isValidEmail, isValidPassword } from "../../utils/validations";
 import { loginWithEmail } from "../../models/auth";
 import { connect } from "dva";
-import { useLang } from "../../utils/i18n";
+import { useLang } from "../../hooks/useLang";
 import { capitalize } from "../../utils";
 
 const layout = {

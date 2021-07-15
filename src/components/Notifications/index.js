@@ -2,7 +2,7 @@ import { BellOutlined } from "@ant-design/icons";
 import { Badge, List, Popover } from "antd";
 import React from "react";
 import { capitalize } from "../../utils";
-import { useLang } from "../../utils/i18n";
+import { useLang } from "../../hooks/useLang";
 
 export default function Notifications({ count }) {
   const [lang] = useLang();

@@ -1,9 +1,10 @@
 import React, { useCallback } from "react";
 import { List, Popover } from "antd";
-import Theme, { useTheme } from "../../utils/theme";
+import Theme from "../../utils/theme";
 import { setPopoverWidth } from "../RootWrapper";
 import { BgColorsOutlined } from "@ant-design/icons";
-import { useLang } from "../../utils/i18n";
+import { useTheme } from "../../hooks/useTheme";
+import { useLang } from "../../hooks/useLang";
 import { capitalize } from "../../utils";
 
 export default function ThemeChanger({
@@ -32,11 +33,10 @@ export default function ThemeChanger({
           renderItem={(color) => (
             <div
               onClick={(e) => setThemeColor(color)}
-              className="grid-center"
+              className="grid-center circular"
               {...itemProps}
               style={{
                 cursor: "pointer",
-                borderRadius: "50%",
                 width: 26,
                 height: 26,
                 display: "flex !important",
@@ -48,9 +48,9 @@ export default function ThemeChanger({
               }}
             >
               <div
+                className="circular"
                 style={{
                   backgroundColor: color,
-                  borderRadius: "50%",
                   width: 18,
                   height: 18,
                 }}

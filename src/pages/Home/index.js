@@ -1,6 +1,6 @@
 import React from "react";
 import PlaceholderPage from "../../components/PlaceholderPage";
-import { useLang } from "../../utils/i18n";
+import { useLang } from "../../hooks/useLang";
 
 export default function Home() {
   const [lang] = useLang();

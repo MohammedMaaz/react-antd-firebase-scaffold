@@ -1,0 +1,63 @@
+@import "../../node_modules/include-media/dist/include-media";
+@import "./theme.scss";
+
+//TODO: cconvert functions 'w' and 'h' to accept multiple arguments for each base-width/height
+
+//all global variables, mixins and functions should be declared here
+//to be used throughout the project without @import statement
+
+//breakpoints for media mixin (include-media lib)
+$breakpoints: (
+  sm: 320px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1920px,
+);
+
+//expressions for easy and intuitive media queries
+$mq-exp: (
+  phone: (
+    "<md",
+  ),
+  tab: (
+    ">=md",
+    "<=lg",
+  ),
+  desktop: (
+    ">lg",
+    "<xl",
+  ),
+  desktop-fhd: (
+    ">=xl",
+  ),
+);
+
+$base-dims: (
+  phone: (
+    187.5,
+    406,
+  ),
+  tab: (
+    250,
+    333,
+  ),
+  desktop: (
+    960,
+    540,
+  ),
+);
+
+//px to vw acc.to base-width
+@function w($px) {
+  @return calc(100vw / var(--base-width) * #{$px});
+}
+
+//px to vh acc. to base-height
+@function h($px) {
+  @return calc(100vh / var(--base-height) * #{$px});
+}
+
+//get a theme property
+@function theme($key) {
+  @return map-get($theme-vars, $key);
+}

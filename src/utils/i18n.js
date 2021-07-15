@@ -1,9 +1,4 @@
-import { useContext } from "react";
-import {
-  LangContext,
-  _onLangChange,
-  _setLang,
-} from "../components/RootWrapper";
+import { _onLangChange, _setLang } from "../components/RootWrapper";
 import en from "../translations/en.json";
 import ur from "../translations/ur.json";
 
@@ -45,12 +40,6 @@ function use(key, langId = get().id) {
     key
   );
 }
-
-export const useLang = () => {
-  const { langId, setLangId } = useContext(LangContext);
-  const lang = langs[langId] || Object.values(langs)[0];
-  return [(key) => use(key, langId), lang.rtl, setLangId, langId];
-};
 
 const Lang = {
   set,

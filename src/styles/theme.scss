@@ -1,0 +1,7 @@
+//override antd theme variables here (need to run 'npm run gen-theme' to take effect)
+//can also define custom theme variables here (intended for internal use and not necessarily
+//to override antd theme variables
+$theme-vars: (
+  primary-color: #1890ff,
+  secondary-color: #f7f6ed,
+);

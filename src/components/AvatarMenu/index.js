@@ -1,6 +1,6 @@
 import { Avatar, Dropdown, Menu } from "antd";
 import React, { useCallback } from "react";
-import { useLang } from "../../utils/i18n";
+import { useLang } from "../../hooks/useLang";
 import AlertPopup from "../AlertPopup";
 import {
   CaretDownOutlined,
@@ -27,6 +27,7 @@ function AvatarMenu({ logoutLoading, logout, displayName }) {
         <Menu>
           <div style={{ padding: "8px 12px" }}>{displayName}</div>
           <Menu.Item
+            key={"logout"}
             disabled={logoutLoading}
             onClick={onLogout}
             icon={logoutLoading ? <LoadingOutlined /> : <LogoutOutlined />}

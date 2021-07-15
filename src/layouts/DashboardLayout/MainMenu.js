@@ -4,7 +4,7 @@ import { routes } from "../../utils/config";
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { connect } from "dva";
 import { getRoutePath } from "../../utils";
-import { useLang } from "../../utils/i18n";
+import { useLang } from "../../hooks/useLang";
 const { SubMenu } = Menu;
 
 function getParentKeys(key, arr = []) {
