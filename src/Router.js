@@ -8,14 +8,15 @@ import {
 } from "react-router-dom";
 import { connect } from "dva";
 import PageSpinner from "./components/Spinner/PageSpinner";
-import { routes } from "./utils/config";
+import { RouteCustomWrapper, routes } from "./utils/config";
 import { setComputedRoutes } from "./models/router";
 
 //layouts
 import EmptyLayout from "./layouts/EmptyLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
-import { getRoutePath } from "./utils/utils";
+import { getRoutePath } from "./utils";
+import RootWrapper from "./components/RootWrapper";
 
 const routeRenderer = (
   routes,
@@ -70,7 +71,9 @@ export default connect(undefined, { setComputedRoutes })(function Router({
 
   return (
     <BrowserRouter>
-      <Switch>{ar}</Switch>
+      <RootWrapper>
+        <Switch>{ar}</Switch>
+      </RootWrapper>
     </BrowserRouter>
   );
 });
@@ -133,9 +136,15 @@ const Route = ({
 }) => {
   return (
     <RouterRoute {...props}>
-      <AuthWrapper type={authType}>
-        <LayoutWrapper type={layoutType}>{children}</LayoutWrapper>
-      </AuthWrapper>
+      <RouteCustomWrapper
+        authType={authType}
+        layoutType={layoutType}
+        {...props}
+      >
+        <AuthWrapper type={authType}>
+          <LayoutWrapper type={layoutType}>{children}</LayoutWrapper>
+        </AuthWrapper>
+      </RouteCustomWrapper>
     </RouterRoute>
   );
 };

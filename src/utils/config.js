@@ -1,5 +1,13 @@
 import React from "react";
-import { DashboardOutlined } from "@ant-design/icons";
+import {
+  BarsOutlined,
+  DashboardOutlined,
+  DownloadOutlined,
+  RiseOutlined,
+  ZoomInOutlined,
+  ZoomOutOutlined,
+} from "@ant-design/icons";
+import { capitalize } from ".";
 
 export const authService = "mock"; //possible values: 'firebase', 'mock'
 
@@ -8,7 +16,7 @@ const PlaceholderPage = require("../components/PlaceholderPage").default;
 //component as they are ordered in the array
 export const routes = [
   {
-    title: "Home", //reqd for main-menu-item and sub-menu-item
+    title: (lang) => capitalize(lang("menu_home")), //reqd for main-menu-item and sub-menu-item (can be a function or a string)
     icon: DashboardOutlined,
     route: {
       //route config for react-router-dom
@@ -21,8 +29,8 @@ export const routes = [
     menuItem: true, //should this route be showed in the nav bar as a menu item (NOT inherited by sub routes)
   },
   {
-    title: "Parent",
-    icon: DashboardOutlined,
+    title: (lang) => capitalize(lang("menu_parent")),
+    icon: BarsOutlined,
     route: {
       path: "/parent",
     },
@@ -31,8 +39,8 @@ export const routes = [
     menuItem: true,
     subRoutes: [
       {
-        title: "Child 1",
-        icon: DashboardOutlined,
+        title: (lang) => capitalize(lang("menu_child") + " 1"),
+        icon: RiseOutlined,
         route: {
           path: "child1",
           exact: true,
@@ -43,8 +51,8 @@ export const routes = [
         menuItem: true,
       },
       {
-        title: "Child 2",
-        icon: DashboardOutlined,
+        title: (lang) => capitalize(lang("menu_child") + " 2"),
+        icon: DownloadOutlined,
         route: {
           path: "child2",
         },
@@ -54,8 +62,8 @@ export const routes = [
         menuItem: true,
         subRoutes: [
           {
-            title: "Grand Child 1",
-            icon: DashboardOutlined,
+            title: (lang) => capitalize(lang("menu_grand_child") + " 1"),
+            icon: ZoomInOutlined,
             route: {
               path: "grand-child1",
               exact: true,
@@ -66,8 +74,8 @@ export const routes = [
             menuItem: true,
           },
           {
-            title: "Grand Child 2",
-            icon: DashboardOutlined,
+            title: (lang) => capitalize(lang("menu_grand_child") + " 2"),
+            icon: ZoomOutOutlined,
             route: {
               path: "grand-child2",
               exact: true,
@@ -78,7 +86,6 @@ export const routes = [
             menuItem: true,
           },
           {
-            title: "Users",
             icon: DashboardOutlined,
             route: {
               path: "/users/:username",
@@ -116,3 +123,8 @@ export const routes = [
     component: require("../pages/404").default,
   },
 ];
+
+//a react component which is the parent of all predefined layouts and can be used to override or
+//define custom logic in routing/layouting, such as handling routes based on custom auth logic
+// receives route config map in prop against each route
+export const RouteCustomWrapper = ({ children }) => children;

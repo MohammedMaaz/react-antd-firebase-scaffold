@@ -3,6 +3,8 @@ import { Form, Input, Button } from "antd";
 import { isValidEmail, isValidPassword } from "../../utils/validations";
 import { loginWithEmail } from "../../models/auth";
 import { connect } from "dva";
+import { useLang } from "../../hooks/useLang";
+import { capitalize } from "../../utils";
 
 const layout = {
   labelCol: {
@@ -20,6 +22,8 @@ const tailLayout = {
 };
 
 const Login = ({ login, loading }) => {
+  const [lang] = useLang();
+
   const onFinish = useCallback(
     (values) => login(values.email, values.password),
     [login]
@@ -27,10 +31,10 @@ const Login = ({ login, loading }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1 style={{ marginBottom: 32 }}>Hacknosys</h1>
+      <h1 style={{ marginBottom: 32 }}>Logotext</h1>
       <Form style={{ textAlign: "left" }} {...layout} onFinish={onFinish}>
         <Form.Item
-          label="Email"
+          label={capitalize(lang("email"))}
           name="email"
           rules={[
             { required: true },
@@ -46,7 +50,7 @@ const Login = ({ login, loading }) => {
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label={capitalize(lang("password"))}
           name="password"
           rules={[
             { required: true },
@@ -62,8 +66,13 @@ const Login = ({ login, loading }) => {
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <Button loading={loading} type="primary" htmlType="submit">
-            Login
+          <Button
+            style={{ textTransform: "capitalize" }}
+            loading={loading}
+            type="primary"
+            htmlType="submit"
+          >
+            {lang("login")}
           </Button>
         </Form.Item>
       </Form>

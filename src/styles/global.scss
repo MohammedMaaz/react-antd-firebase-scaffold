@@ -1,0 +1,114 @@
+//base width and height variables in px (acc. to the design)
+//default fallback values
+:root {
+  --base-width: #{nth(map-get($base-dims, desktop), 1)};
+  --base-height: #{nth(map-get($base-dims, desktop), 2)};
+}
+
+//for phone
+@include media(map-get($mq-exp, phone)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, phone), 1)};
+    --base-height: #{nth(map-get($base-dims, phone), 2)};
+  }
+}
+
+//for tab
+@include media(map-get($mq-exp, tab)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, tab), 1)};
+    --base-height: #{nth(map-get($base-dims, tab), 2)};
+  }
+}
+
+//for desktop
+@include media(map-get($mq-exp, desktop)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, desktop), 1)};
+    --base-height: #{nth(map-get($base-dims, desktop), 2)};
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-popover-title {
+  min-width: unset;
+  text-align: center;
+}
+
+.ant-layout {
+  background-color: #fff !important;
+}
+
+.none {
+  display: none;
+}
+
+.show-on-xs {
+  display: none;
+}
+
+.left {
+  float: left;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.right {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.rounded {
+  border-radius: 999px;
+}
+
+.circular {
+  border-radius: 50% !important;
+}
+
+@include media(map-get($mq-exp, phone)...) {
+  .hide-on-xs {
+    display: none;
+  }
+  .show-on-xs {
+    display: block;
+  }
+}

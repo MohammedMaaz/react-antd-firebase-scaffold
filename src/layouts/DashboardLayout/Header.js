@@ -1,13 +1,13 @@
 import React from "react";
 import { Layout } from "antd";
-import logo from "../../assets/images/logo.png";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import HeaderMenu from "./HeaderMenu";
-import { Link } from "react-router-dom";
+import ThemeChanger from "../../components/ThemeChanger";
+import LangChanger from "../../components/LangChanger";
+import Notifications from "../../components/Notifications";
+import AvatarMenu from "../../components/AvatarMenu";
 
 const { Header: AntdHeader } = Layout;
 
-export default function Header({ collapsed, toggleCollapsed }) {
+function Header() {
   return (
     <AntdHeader
       style={{
@@ -15,32 +15,19 @@ export default function Header({ collapsed, toggleCollapsed }) {
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
+        background: "unset",
+        paddingRight: 32,
       }}
     >
+      <div style={{ display: "flex", alignItems: "center" }}></div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        {collapsed ? (
-          <MenuUnfoldOutlined
-            style={{ color: "#fff", fontSize: 18 }}
-            onClick={toggleCollapsed}
-          />
-        ) : (
-          <MenuFoldOutlined
-            style={{ color: "#fff", fontSize: 18 }}
-            onClick={toggleCollapsed}
-          />
-        )}
-        <Link to="/">
-          <img
-            alt="site-logo"
-            src={logo}
-            style={{
-              height: 40,
-              marginLeft: "16px",
-            }}
-          />
-        </Link>
+        <LangChanger style={{ marginRight: 20 }} />
+        <ThemeChanger style={{ marginRight: 20 }} />
+        <Notifications count={0} />
+        <AvatarMenu />
       </div>
-      <HeaderMenu />
     </AntdHeader>
   );
 }
+
+export default Header;

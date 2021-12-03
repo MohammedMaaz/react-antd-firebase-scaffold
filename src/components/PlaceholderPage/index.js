@@ -9,6 +9,7 @@ export default function PlaceholderPage({ title }) {
         placeItems: "center",
         width: "100%",
         height: "100%",
+        textTransform: "capitalize",
       }}
     >
       <Typography.Title>{title}</Typography.Title>

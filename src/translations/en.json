@@ -1,0 +1,19 @@
+{
+    "menu_home": "home",
+    "menu_parent": "parent",
+    "menu_child": "child",
+    "menu_grand_child": "grand child",
+    "lang_name": "english",
+    "page": "page",
+    "logout": "logout",
+    "logout_msg": "are you sure you want to logout?",
+    "select_theme": "select theme",
+    "change_theme": "change theme",
+    "notifications": "notifications",
+    "cancel": "cancel",
+    "ok": "ok",
+    "login": "login",
+    "email": "email",
+    "password": "password",
+    "signup": "signup"
+}
